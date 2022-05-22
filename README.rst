@@ -74,6 +74,7 @@ May 2022 primarily because it appeared that upstream had been abandoned. There w
 2. Lack of stricter modern code quality tools used in CI.
 3. Improved contributor experience by using Github Actions for CI.
 4. Possibility for optimisation with optional dependency on `cchardet`.
+5. Removal of Python 2 support, and explicit support for newer versions of Python 3.
 
 Credits
 -------

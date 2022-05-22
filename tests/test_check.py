@@ -1,20 +1,7 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-"""
-test_binaryornot
-------------------
-
-Tests for `binaryornot` module.
-"""
-
 import logging
-try:
-    from unittest.case import expectedFailure
-    import unittest
-except ImportError:
-    from unittest2.case import expectedFailure
-    import unittest2 as unittest
+
+from unittest.case import expectedFailure
+import unittest
 
 import os
 from contextlib import contextmanager
@@ -23,7 +10,7 @@ from tempfile import mkstemp
 from hypothesis import given
 from hypothesis.strategies import binary
 
-from binaryornot.check import is_binary
+from isbinary.check import is_binary
 
 
 logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.INFO)
@@ -227,7 +214,3 @@ class TestDetectionProperties(unittest.TestCase):
     def test_never_crashes(self, data):
         with bytes_in_file(data) as f:
             is_binary(f)
-
-
-if __name__ == '__main__':
-    unittest.main()
