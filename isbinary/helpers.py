@@ -43,7 +43,7 @@ def is_binary_string(bytes_to_check):
     files than the Perl algorithm, since all ASCII compatible character
     sets are accepted as text, not just utf-8.
 
-    :param bytes: A chunk of bytes to check.
+    :param bytes_to_check: A chunk of bytes to check.
     :returns: True if appears to be a binary, otherwise False.
     """
 
@@ -85,11 +85,7 @@ def is_binary_string(bytes_to_check):
     decodable_as_unicode = False
     if detected_encoding["confidence"] > 0.9 and detected_encoding["encoding"] != "ascii":
         try:
-            try:
-                bytes_to_check.decode(encoding=detected_encoding["encoding"])
-            except TypeError:
-                # happens only on Python 2.6
-                unicode(bytes_to_check, encoding=detected_encoding["encoding"])  # noqa
+            bytes_to_check.decode(encoding=detected_encoding["encoding"])
             decodable_as_unicode = True
             logger.debug("success: decodable_as_unicode: " "%(decodable_as_unicode)r", locals())
         except LookupError:
@@ -97,18 +93,15 @@ def is_binary_string(bytes_to_check):
         except UnicodeDecodeError:
             logger.debug("failure: decodable_as_unicode: " "%(decodable_as_unicode)r", locals())
 
-    logger.debug("failure: decodable_as_unicode: " "%(decodable_as_unicode)r", locals())
     if is_likely_binary:
-        if decodable_as_unicode:
-            return False
-        else:
-            return True
-    else:
-        if decodable_as_unicode:
-            return False
-        else:
-            if b"\x00" in bytes_to_check or b"\xff" in bytes_to_check:
-                # Check for NULL bytes last
-                logger.debug("has nulls:" + repr(b"\x00" in bytes_to_check))
-                return True
+        return not decodable_as_unicode
+
+    if decodable_as_unicode:
         return False
+
+    if b"\x00" in bytes_to_check or b"\xff" in bytes_to_check:
+        # Check for NULL bytes last
+        logger.debug("has nulls:" + repr(b"\x00" in bytes_to_check))
+        return True
+
+    return False
