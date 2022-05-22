@@ -3,7 +3,7 @@ import argparse
 from .check import is_binary
 
 
-def main(args = None):
+def main(args=None):
     if args is None:
         import sys
 

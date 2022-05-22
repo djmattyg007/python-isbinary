@@ -20,7 +20,7 @@ def is_binary(filename):
     :param filename: File to check.
     :returns: True if it's a binary file, otherwise False.
     """
-    logger.debug('is_binary: %(filename)r', locals())
+    logger.debug("is_binary: %(filename)r", locals())
 
     # Check if the starting chunk is a binary string
     chunk = get_starting_chunk(filename)

@@ -25,8 +25,8 @@ def _quote(*args: str) -> str:
 
 @task
 def reformat(c):
-    c.run(_quote("isort", *CODE_PATHS), pty=pty)
-    c.run(_quote("black", *CODE_PATHS), pty=pty)
+    c.run(_quote("isort", "--skip-glob=/tests/*/", *CODE_PATHS), pty=pty)
+    c.run(_quote("black", "--exclude=/tests/*/", *CODE_PATHS), pty=pty)
 
 
 @task
