@@ -12,4 +12,6 @@
 .coverage
 /.hypothesis/
 
+/dist/
+
 /docs/build/
