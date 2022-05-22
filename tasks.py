@@ -37,7 +37,13 @@ def lint(c):
 
 @task
 def test(c, onefile=""):
-    pytest_args = ["pytest", "--strict-config", "--cov=isbinary", "--cov-report=term-missing"]
+    pytest_args = [
+        "pytest",
+        "--strict-config",
+        "--cov=isbinary",
+        "--cov-report=term-missing",
+        "--ignore=tests/fixtures",
+    ]
     if in_ci:
         pytest_args.extend(("--cov-report=xml", "--strict-markers"))
     else:
