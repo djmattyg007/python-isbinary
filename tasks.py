@@ -25,14 +25,13 @@ def _quote(*args: str) -> str:
 
 @task
 def reformat(c):
-    c.run(_quote("isort", "--skip-glob=/tests/*/", *CODE_PATHS), pty=pty)
-    c.run(_quote("black", "--exclude=/tests/*/", *CODE_PATHS), pty=pty)
+    c.run(_quote("isort", "--skip=/tests/fixtures/", *CODE_PATHS), pty=pty)
+    c.run(_quote("black", "--exclude=/tests/fixtures/", *CODE_PATHS), pty=pty)
 
 
 @task
 def lint(c):
-    exclude_paths = {"tests/files", "tests/isBinaryFile"}
-    flake8_args = ("flake8", "--show-source", "--statistics", "--exclude", ",".join(exclude_paths))
+    flake8_args = ("flake8", "--show-source", "--statistics", "--exclude", "tests/fixtures")
     c.run(_quote(*flake8_args, *CODE_PATHS), pty=pty)
 
 
