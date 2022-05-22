@@ -3,6 +3,15 @@
 History
 -------
 
+1.0.0 (2022-05-22)
+~~~~~~~~~~~~~~~~~~
+
+* First release after fork.
+* Support for Python 2 removed.
+* Only support Python 3.8+ now.
+* The main code interface is mostly compatible. Change `from binaryornot.check import is_binary` to `from isbinary import is_binary_file`.
+* The CLI is now run with `python3 -m isbinary <filename>`.
+
 0.4.4 (2017-04-13)
 ~~~~~~~~~~~~~~~~~~
 
