@@ -1,0 +1,16 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "isbinary"
+version = "1.0.0"
+description = "Lightweight pure Python package to check if a file is binary or text."
+authors = ["Matthew Gamble <git@matthewgamble.net>"]
+license = "BSD"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+chardet = "^3.0.2 || ^4.0.0"
+
+[tool.poetry.dev-dependencies]
