@@ -67,8 +67,8 @@ jobs:
       - name: "Run linting"
         run: "poetry run invoke lint"
 
-      - name: "Run type checking"
-        run: "poetry run invoke type-check"
+#      - name: "Run type checking"
+#        run: "poetry run invoke type-check"
 
       - name: "Run tests"
         run: "poetry run invoke test"
