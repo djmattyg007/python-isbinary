@@ -1,6 +1,10 @@
+from __future__ import annotations
+
 import enum
 import os
 from typing import Final, Union
+
+from ._chardet import chardet_detect
 
 
 _default_starting_chunk_len: Final = 1024
@@ -69,13 +73,9 @@ def is_decodable_as_unicode(bytes_to_check: bytes, /) -> bool:
     :param bytes_to_check: A chunk of bytes to check.
     :return: True if is unicode-decodable, False otherwise.
     """
-    try:
-        import cchardet as chardet
-    except ImportError:
-        import chardet
 
     # Check for binary for possible encoding detection with chardet
-    detected_encoding = chardet.detect(bytes_to_check)
+    detected_encoding = chardet_detect(bytes_to_check)
 
     # Decide if binary or text
     decodable_as_unicode = False
