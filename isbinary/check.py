@@ -1,15 +1,17 @@
 import logging
+import os
+from typing import Final, Union
 
 
 logger = logging.getLogger(__name__)
 
 
-_control_chars = b"\n\r\t\f\b"
-_printable_ascii = _control_chars + bytes(range(32, 127))
-_printable_high_ascii = bytes(range(127, 256))
+_control_chars: Final = b"\n\r\t\f\b"
+_printable_ascii: Final = _control_chars + bytes(range(32, 127))
+_printable_high_ascii: Final = bytes(range(127, 256))
 
 
-def get_starting_chunk(filename, length=1024):
+def get_starting_chunk(filename: Union[str, os.PathLike], length: int = 1024) -> bytes:
     """
     :param filename: File to open and get the first little chunk of.
     :param length: Number of bytes to read, default 1024.
@@ -24,7 +26,7 @@ def get_starting_chunk(filename, length=1024):
         print(e)
 
 
-def is_binary_string(bytes_to_check):
+def is_binary_string(bytes_to_check: bytes) -> bool:
     """
     Uses a simplified version of the Perl detection algorithm,
     based roughly on Eli Bendersky's translation to Python:
@@ -99,7 +101,7 @@ def is_binary_string(bytes_to_check):
     return False
 
 
-def is_binary(filename):
+def is_binary(filename: Union[str, os.PathLike]) -> bool:
     """
     :param filename: File to check.
     :returns: True if it's a binary file, otherwise False.

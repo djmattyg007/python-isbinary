@@ -1,9 +1,10 @@
 import argparse
+from typing import Optional, Sequence
 
 from .check import is_binary
 
 
-def main(args=None):
+def main(args: Optional[Sequence[str]] = None) -> None:
     if args is None:
         import sys
 
