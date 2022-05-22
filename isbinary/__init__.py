@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .check import (
     BinaryLikeliness,
     get_starting_chunk,
