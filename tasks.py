@@ -31,7 +31,9 @@ def reformat(c):
 
 @task
 def lint(c):
-    c.run(_quote("flake8", "--show-source", "--statistics", *CODE_PATHS), pty=pty)
+    exclude_paths = {"tests/files", "tests/isBinaryFile"}
+    flake8_args = ("flake8", "--show-source", "--statistics", "--exclude", ",".join(exclude_paths))
+    c.run(_quote(*flake8_args, *CODE_PATHS), pty=pty)
 
 
 @task

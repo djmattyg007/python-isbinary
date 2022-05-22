@@ -12,7 +12,8 @@ select =
     # pep8-naming rules
     N
     # flake8-pytest-style
-    PT
+    # TODO: re-enable this after rewriting the test suite
+    #PT
     # flake8-annotations-complexity
     TAE
     # flake8-expression-complexity
@@ -32,3 +33,6 @@ max-complexity = 10
 pytest-fixture-no-parentheses = true
 pytest-parametrize-values-type = tuple
 pytest-parametrize-values-row-type = tuple
+
+# flake8-requirements
+known-modules = isbinary
