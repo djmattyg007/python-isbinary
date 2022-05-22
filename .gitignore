@@ -6,10 +6,7 @@
 *.pyc
 *.pyo
 
-# Installer logs
-pip-log.txt
-
-# Unit test / coverage reports
+/htmlcov/
 .coverage
 
 # Complexity
@@ -20,7 +17,7 @@ output/*/index.html
 docs/_build
 
 # Coverage
-htmlcov/
+
 
 # Profiling
 binaryornot_profile

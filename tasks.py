@@ -1,64 +1,59 @@
-from invoke import task, run
+import os
+import shlex
+import sys
+
+from invoke import task, util
+
+
+in_ci = os.environ.get("CI", "false") == "true"
+if in_ci:
+    pty = False
+else:
+    pty = util.isatty(sys.stdout) and util.isatty(sys.stderr)
+
+
+CODE_PATHS = (
+    "isbinary",
+    "tests",
+    "tasks.py",
+)
+
+
+def _quote(*args: str) -> str:
+    return " ".join(map(shlex.quote, args))
 
 
 @task
-def clean_docs():
-    run("rm -rf docs/_build")
-    run("rm -rf docs/binaryornot.rst")
-    run("rm -rf docs/modules.rst")
-
-
-@task('clean_docs')
-def docs():
-    run("sphinx-apidoc -o docs/ binaryornot/")
-    run("sphinx-build docs docs/_build")
-    run("open docs/_build/index.html")
+def reformat(c):
+    c.run(_quote("isort", *CODE_PATHS), pty=pty)
+    c.run(_quote("black", *CODE_PATHS), pty=pty)
 
 
 @task
-def flake8():
-    run("flake8 binaryornot tests")
+def lint(c):
+    c.run(_quote("flake8", "--show-source", "--statistics", *CODE_PATHS), pty=pty)
 
 
 @task
-def autopep8():
-    run("autopep8 --in-place --aggressive -r binaryornot")
-    run("autopep8 --in-place --aggressive -r tests")
+def test(c, onefile=""):
+    pytest_args = ["pytest", "--strict-config", "--cov=isbinary", "--cov-report=term-missing"]
+    if in_ci:
+        pytest_args.extend(("--cov-report=xml", "--strict-markers"))
+    else:
+        pytest_args.append("--cov-report=html")
+
+    if onefile:
+        pytest_args.append(onefile)
+
+    c.run(_quote(*pytest_args), pty=pty)
 
 
 @task
-def test():
-    run("python setup.py test")
+def type_check(c):
+    c.run(_quote("mypy", *CODE_PATHS), pty=pty)
 
 
 @task
-def coverage():
-    run("coverage run --source binaryornot setup.py test")
-    run("coverage report -m")
-    run("coverage html")
-    run("open htmlcov/index.html")
-
-
-@task
-def clean_build():
-    run("rm -fr build/")
-    run("rm -fr dist/")
-    run("rm -fr *.egg-info")
-
-
-@task
-def clean_pyc():
-    run("find . -name '*.pyc' -exec rm -f {} +")
-    run("find . -name '*.pyo' -exec rm -f {} +")
-    run("find . -name '*~' -exec rm -f {} +")
-
-
-@task('clean_build', 'clean_pyc')
-def sdist():
-    run("python setup.py sdist")
-    run("ls -l dist")
-
-
-@task('sdist')
-def release():
-    run("python setup.py upload")
+def docs(c):
+    with c.cd("docs"):
+        c.run("sphinx-build -M html source build -a -W", pty=pty)
