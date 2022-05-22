@@ -9,9 +9,9 @@ Contents:
    readme
    installation
    quickstart
+   changelog
    contributing
    authors
-   history
    modules
 
 Indices and tables
