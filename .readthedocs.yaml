@@ -1,0 +1,21 @@
+version: 2
+formats: "all"
+
+build:
+  os: "ubuntu-22.04"
+  tools:
+    python: "3.10"
+  jobs:
+    # https://github.com/readthedocs/readthedocs.org/issues/4912#issuecomment-1110189914
+    pre_create_environment:
+      - "asdf plugin add poetry"
+      - "asdf install poetry latest"
+      - "asdf global poetry latest"
+      - "poetry config virtualenvs.create false"
+    post_install:
+      - "poetry install"
+
+sphinx:
+  builder: "html"
+  fail_on_warning: true
+  configuration: "docs/source/conf.py"
