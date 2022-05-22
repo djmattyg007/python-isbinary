@@ -36,6 +36,7 @@ mypy = "^0.950"
 pep8-naming = "^0.12.1"
 pytest = "^7.1.2"
 pytest-cov = "^3.0.0"
+types-chardet = "^4.0.4"
 types-invoke = "^1.6.7"
 
 [tool.black]
@@ -55,5 +56,7 @@ lines_between_sections = 1
 check_untyped_defs = true
 strict_equality = true
 warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
 warn_unused_configs = true
 warn_unused_ignores = true

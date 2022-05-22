@@ -529,6 +529,14 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "types-chardet"
+version = "4.0.4"
+description = "Typing stubs for chardet"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "types-invoke"
 version = "1.6.7"
 description = "Typing stubs for invoke"
@@ -547,7 +555,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "eb9ee0c959a67d20e0ce172472fe787ddc8a0465dcd97850c3e93851b689689e"
+content-hash = "ddc6ec814c96b308a8681c207c279b5f814ca72474994956d8a04bc049fe2765"
 
 [metadata.files]
 astpretty = [
@@ -809,6 +817,10 @@ toml = [
 tomli = [
     {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
     {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
+]
+types-chardet = [
+    {file = "types-chardet-4.0.4.tar.gz", hash = "sha256:eeb10378b44261238444d61c8e12d97d8dee151f0f4b96cc9d4ac559ca8be299"},
+    {file = "types_chardet-4.0.4-py3-none-any.whl", hash = "sha256:43f7e32aba6faab0c4441075bfe7cd11807282456b913cd28c60e8ca7aeb8e4e"},
 ]
 types-invoke = [
     {file = "types-invoke-1.6.7.tar.gz", hash = "sha256:7574592189370803d487e019804b1aefe77f29b3666ec22829a2a41fd6921337"},
