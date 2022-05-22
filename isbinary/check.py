@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-
-"""
-binaryornot.check
------------------
-
-Main code for checking if a file is binary or text.
-"""
-
 import logging
 
 from .helpers import get_starting_chunk, is_binary_string

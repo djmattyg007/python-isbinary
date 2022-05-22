@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-
-"""
-binaryornot.helpers
--------------------
-
-Helper utilities used by BinaryOrNot.
-"""
-
 import logging
 
 import chardet
@@ -39,14 +29,8 @@ def get_starting_chunk(filename, length=1024):
 
 
 _control_chars = b"\n\r\t\f\b"
-if bytes is str:
-    # Python 2 means we need to invoke chr() explicitly
-    _printable_ascii = _control_chars + b"".join(map(chr, range(32, 127)))
-    _printable_high_ascii = b"".join(map(chr, range(127, 256)))
-else:
-    # Python 3 means bytes accepts integer input directly
-    _printable_ascii = _control_chars + bytes(range(32, 127))
-    _printable_high_ascii = bytes(range(127, 256))
+_printable_ascii = _control_chars + bytes(range(32, 127))
+_printable_high_ascii = bytes(range(127, 256))
 
 
 def is_binary_string(bytes_to_check):
