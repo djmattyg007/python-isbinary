@@ -1,4 +1,3 @@
-import logging
 import os
 import unittest
 from contextlib import contextmanager
@@ -9,9 +8,6 @@ from hypothesis import given
 from hypothesis.strategies import binary
 
 from isbinary.check import is_binary
-
-
-logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.INFO)
 
 
 class TestIsBinary(unittest.TestCase):
