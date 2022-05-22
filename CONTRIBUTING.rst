@@ -13,7 +13,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/audreyr/binaryornot/issues.
+Report bugs at https://github.com/djmattyg007/python-isbinary/issues.
 
 If you are reporting a bug, please include:
 
@@ -36,14 +36,14 @@ is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-BinaryOrNot could always use more documentation, whether as part of the 
-official BinaryOrNot docs, in docstrings, or even on the web in blog posts,
+Isbinary can always use more documentation, whether as part of the
+official isbinary docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/audreyr/binaryornot/issues.
+The best way to send feedback is to file an issue at https://github.com/djmattyg007/python-isbinary/issues.
 
 If you are proposing a feature:
 
@@ -55,38 +55,37 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `binaryornot` for local development.
+Ready to contribute? Here's how to set up `isbinary` for local development.
 
-1. Fork the `binaryornot` repo on GitHub.
+1. Fork the `isbinary` repo on GitHub.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/binaryornot.git
+    $ git clone git@github.com:your_name_here/python-isbinary.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
-
-    $ mkvirtualenv binaryornot
-    $ cd binaryornot/
-    $ python setup.py develop
+3. Run `poetry install` to install all dependencies in a virtualenv.
 
 4. Create a branch for local development::
 
-    $ git checkout -b name-of-your-bugfix-or-feature
+    $ git switch -c name-of-your-bugfix-or-feature
 
 Now you can make your changes locally.
 
-5. When you're done making changes, check that your changes pass flake8 and the
-tests, including testing other Python versions with tox::
+5. When you're done making changes, check that the code quality checks
+   still pass::
 
-    $ flake8 binaryornot tests
-	$ python setup.py test
-    $ tox
+    $ poetry run invoke lint
+    $ poetry run invoke type-check
+    $ poetry run invoke test
 
-To get flake8 and tox, just pip install them into your virtualenv. 
+You can automatically reformat the code with isort and black by invoking
+another task::
+
+    $ poetry run invoke reformat
 
 6. Commit your changes and push your branch to GitHub::
 
-    $ git add .
-    $ git commit -m "Your detailed description of your changes."
+    $ git add -p
+    $ git commit
     $ git push origin name-of-your-bugfix-or-feature
 
 7. Submit a pull request through the GitHub website.
@@ -96,17 +95,17 @@ Pull Request Guidelines
 
 Before you submit a pull request, check that it meets these guidelines:
 
-1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.
-3. The pull request should work for Python 2.6, 2.7, and 3.7, and for PyPy. Check 
-   https://travis-ci.org/audreyr/binaryornot/pull_requests
-   and make sure that the tests pass for all supported Python versions.
+1. If it includes changes to the main code, it should also include updates to
+   the tests.
+2. If the changes add new functionality, the docs should be updated. Put your
+   new functionality into a function with a docstring, and add the feature to
+   the list in README.rst.
+3. The changes should work for all currently supported versions of Python.
+   Feedback from CI should be automatically added to the pull request.
 
 Tips
 ----
 
 To run a subset of tests::
 
-	$ python -m unittest tests.test_binaryornot
+    $ poetry run invoke test --onefile=tests/test_symlinks.py
