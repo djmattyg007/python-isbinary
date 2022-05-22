@@ -136,7 +136,7 @@ def is_binary_file(
     """
     :param filename: File to check.
     :param starting_chunk_len: Number of bytes to read, default 2048.
-    :returns: True if it's a binary file, otherwise False.
+    :return: True if it's a binary file, otherwise False.
     """
     # Check if the starting chunk is a binary string
     try:
