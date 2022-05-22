@@ -2,6 +2,7 @@ import enum
 import os
 from typing import Final, Union
 
+
 _default_starting_chunk_len: Final = 1024
 
 _control_chars: Final = b"\n\r\t\f\b"
@@ -9,7 +10,9 @@ _printable_ascii: Final = _control_chars + bytes(range(32, 127))
 _printable_high_ascii: Final = bytes(range(127, 256))
 
 
-def get_starting_chunk(filename: Union[str, os.PathLike], /, *, chunk_len: int = _default_starting_chunk_len) -> bytes:
+def get_starting_chunk(
+    filename: Union[str, os.PathLike], /, *, chunk_len: int = _default_starting_chunk_len
+) -> bytes:
     """
     :param filename: File to open and get the first little chunk of.
     :param chunk_len: Number of bytes to read, default 1024.
@@ -127,7 +130,9 @@ def is_binary_string(bytes_to_check: bytes, /) -> bool:
     return has_null_bytes(bytes_to_check)
 
 
-def is_binary_file(filename: Union[str, os.PathLike], /, *, starting_chunk_len: int = _default_starting_chunk_len) -> bool:
+def is_binary_file(
+    filename: Union[str, os.PathLike], /, *, starting_chunk_len: int = _default_starting_chunk_len
+) -> bool:
     """
     :param filename: File to check.
     :param starting_chunk_len: Number of bytes to read, default 1024.

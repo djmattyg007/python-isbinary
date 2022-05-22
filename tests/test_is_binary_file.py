@@ -106,23 +106,26 @@ def test_svg(check_file_fixture: CheckFunc) -> None:
     assert check_file_fixture("glyphiconshalflings-regular.svg") is False
 
 
-@pytest.mark.parametrize("filename", (
-    "bom_utf-16",
-    "bom_utf-16le",
-    "test-utf16be",
-    "bom_utf-32le",
-    "utf_8",
-    "test-gb2",
-    "test-kr",
-    "test-latin",
-    "big5",
-    "test-gb",
-    "bom_utf-32",
-    "bom_utf-8",
-    "big5_B",
-    "test-shishi",
-    "utf8cn",
-))
+@pytest.mark.parametrize(
+    "filename",
+    (
+        "bom_utf-16",
+        "bom_utf-16le",
+        "test-utf16be",
+        "bom_utf-32le",
+        "utf_8",
+        "test-gb2",
+        "test-kr",
+        "test-latin",
+        "big5",
+        "test-gb",
+        "bom_utf-32",
+        "bom_utf-8",
+        "big5_B",
+        "test-shishi",
+        "utf8cn",
+    ),
+)
 def test_text_encoding(check_binfile_fixture: CheckFunc, filename: str) -> None:
     assert check_binfile_fixture(f"encodings/{filename}.txt") is False
 
