@@ -6,8 +6,11 @@
 *.pyc
 *.pyo
 
+/.mypy_cache/
+/.pytest_cache/
 /htmlcov/
 .coverage
+/.hypothesis/
 
 # Complexity
 output/*.html
@@ -15,12 +18,3 @@ output/*/index.html
 
 # Sphinx
 docs/_build
-
-# Coverage
-
-
-# Profiling
-binaryornot_profile
-
-# Hypothesis
-.hypothesis
