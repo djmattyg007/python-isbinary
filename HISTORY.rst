@@ -8,7 +8,6 @@ History
 
 * Notify users for file i/o issues. Thanks @lukehinds!
 
-
 0.4.3 (2017-04-13)
 ~~~~~~~~~~~~~~~~~~
 
@@ -33,7 +32,6 @@ History
 * Add documentation status badge to README.rst. (#15) Thanks `@hackebrot`_.
 * Run tox in travis.yml. Add pypy and Python 3.4 to tox environments. (#16) Thanks `@hackebrot`_ `@pydanny`_.
 * Handle LookupError when detecting encoding. (#17) Thanks `@DRMacIver`_.
-
 
 .. _`@pombredanne`: https://github.com/pombredanne
 .. _`@pydanny`: https://github.com/pydanny
