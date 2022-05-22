@@ -25,6 +25,8 @@ ignore =
     E501
     # W503: line break before binary operator (not PEP8 compliant)
     W503
+    # I900: not working properly? TODO: work out why
+    I900
 
 # mccabe
 max-complexity = 10
