@@ -8,6 +8,14 @@ version = "1.0.0"
 description = "Lightweight pure Python package to check if a file is binary or text."
 authors = ["Matthew Gamble <git@matthewgamble.net>"]
 license = "BSD"
+readme = "README.rst"
+homepage = "https://github.com/djmattyg007/python-isbinary"
+repository = "https://github.com/djmattyg007/python-isbinary"
+documentation = "https://isbinary.readthedocs.io/"
+keywords = [
+    "binary",
+    "file",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
