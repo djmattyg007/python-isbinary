@@ -1,7 +1,7 @@
 import argparse
 from typing import Optional, Sequence
 
-from .check import is_binary
+from .check import is_binary_file
 
 
 def main(args: Optional[Sequence[str]] = None) -> None:
@@ -14,6 +14,9 @@ def main(args: Optional[Sequence[str]] = None) -> None:
 
     parser.add_argument("filename", help="Path to a file that should be checked.")
 
-    args = parser.parse_args(args)
+    parsed_args = parser.parse_args(args)
 
-    print(is_binary(**vars(args)))
+    print("true" if is_binary_file(parsed_args.filename) else "false")
+
+
+__all__ = ("main",)
