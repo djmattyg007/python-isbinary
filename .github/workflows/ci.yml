@@ -65,16 +65,16 @@ jobs:
         run: "poetry install --no-interaction --no-root"
 
       - name: "Run linting"
-        run: "python3 -m invoke lint"
+        run: "poetry run invoke lint"
 
       - name: "Run type checking"
-        run: "python3 -m invoke type-check"
+        run: "poetry run invoke type-check"
 
       - name: "Run tests"
-        run: "python3 -m invoke test"
+        run: "poetry run invoke test"
 
       - name: "Test building package"
-        run: "python3 -m build"
+        run: "poetry build"
 
       - name: "Upload coverage data to Codecov"
         uses: "codecov/codecov-action@v3"
