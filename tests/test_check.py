@@ -7,7 +7,7 @@ from unittest.case import expectedFailure
 from hypothesis import given
 from hypothesis.strategies import binary
 
-from isbinary.check import is_binary
+from isbinary import is_binary_file as is_binary
 
 
 class TestIsBinary(unittest.TestCase):

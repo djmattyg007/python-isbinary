@@ -124,7 +124,7 @@ def is_binary_string(bytes_to_check: bytes, /) -> bool:
     return has_null_bytes(bytes_to_check)
 
 
-def is_binary(filename: Union[str, os.PathLike], /, *, starting_chunk_len: int = _default_starting_chunk_len) -> bool:
+def is_binary_file(filename: Union[str, os.PathLike], /, *, starting_chunk_len: int = _default_starting_chunk_len) -> bool:
     """
     :param filename: File to check.
     :param starting_chunk_len: Number of bytes to read, default 1024.
@@ -133,3 +133,14 @@ def is_binary(filename: Union[str, os.PathLike], /, *, starting_chunk_len: int =
     # Check if the starting chunk is a binary string
     chunk = get_starting_chunk(filename, chunk_len=starting_chunk_len)
     return is_binary_string(chunk)
+
+
+__all__ = (
+    "get_starting_chunk",
+    "BinaryLikeliness",
+    "is_likely_binary",
+    "is_decodable_as_unicode",
+    "has_null_bytes",
+    "is_binary_string",
+    "is_binary_file",
+)
