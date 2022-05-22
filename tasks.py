@@ -36,7 +36,7 @@ def lint(c):
 
 
 @task
-def test(c, onefile=""):
+def test(c, onefile="", verbose=False):
     pytest_args = [
         "pytest",
         "--strict-config",
@@ -51,6 +51,9 @@ def test(c, onefile=""):
 
     if onefile:
         pytest_args.append(onefile)
+
+    if verbose:
+        pytest_args.append("-vv")
 
     c.run(_quote(*pytest_args), pty=pty)
 
