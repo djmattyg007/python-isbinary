@@ -139,7 +139,13 @@ def is_binary_file(
     :returns: True if it's a binary file, otherwise False.
     """
     # Check if the starting chunk is a binary string
-    chunk = get_starting_chunk(filename, chunk_len=starting_chunk_len)
+    try:
+        chunk = get_starting_chunk(filename, chunk_len=starting_chunk_len)
+    except FileNotFoundError:
+        if os.path.islink(filename) and not os.path.exists(filename):
+            return True
+        raise
+
     return is_binary_string(chunk)
 
 
