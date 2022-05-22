@@ -2,8 +2,13 @@
 Credits
 =======
 
-Development Leads
------------------
+Current maintainer
+------------------
+
+* Matthew Gamble
+
+Previous maintainers
+--------------------
 
 * Audrey Roy Greenfeld (`@audreyr`_)
 * Daniel Roy Greenfeld (`@pydanny`_)
