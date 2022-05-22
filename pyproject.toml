@@ -10,7 +10,49 @@ authors = ["Matthew Gamble <git@matthewgamble.net>"]
 license = "BSD"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 chardet = "^3.0.2 || ^4.0.0"
 
 [tool.poetry.dev-dependencies]
+hypothesis = "^6.46.7"
+
+# Code quality packages
+black = "^22.3.0"
+flake8 = "^4.0.1"
+flake8-annotations-complexity = "^0.0.7"
+flake8-black = "^0.3.3"
+flake8-breakpoint = "^1.1.0"
+flake8-bugbear = "^22.4.25"
+flake8-builtins = "^1.5.3"
+flake8-comprehensions = "^3.10.0"
+flake8-eradicate = "^1.2.1"
+flake8-expression-complexity = "^0.0.11"
+flake8-isort = "^4.1.1"
+flake8-pytest-style = "^1.6.0"
+flake8-requirements = "^1.5.3"
+invoke = "^1.7.1"
+isort = "^5.10.1"
+mypy = "^0.950"
+pep8-naming = "^0.12.1"
+pytest = "^7.1.2"
+types-invoke = "^1.6.7"
+
+[tool.black]
+target-version = ["py38", "py39", "py310"]
+line-length = 100
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 100
+known_tests = "tests"
+sections = "FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,TESTS,LOCALFOLDER"
+lines_after_imports = 2
+lines_between_sections = 1
+
+[tool.mypy]
+check_untyped_defs = true
+strict_equality = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
