@@ -43,6 +43,26 @@ types-invoke = "^1.6.7"
 target-version = ["py38", "py39", "py310"]
 line-length = 100
 
+[tool.coverage.run]
+branch = true
+include = [
+    "isbinary/*",
+]
+omit = [
+    "isbinary/__main__.py",
+    "tests/*",
+    "tasks.py",
+]
+
+
+[tool.coverage.report]
+fail_under = 97
+exclude_lines = [
+    "pragma: no cover",
+    "noqa",
+    "if TYPE_CHECKING:",
+]
+
 [tool.isort]
 profile = "black"
 multi_line_output = 3

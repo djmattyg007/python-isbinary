@@ -5,7 +5,7 @@ from .check import is_binary_file
 
 
 def main(args: Optional[Sequence[str]] = None) -> None:
-    if args is None:
+    if args is None:  # pragma: no cover
         import sys
 
         args = sys.argv[1:]
