@@ -56,13 +56,24 @@ Why?
 You may be thinking, "I can write this in 2 lines of code?!"
 
 It's actually not that easy. Here's a great article about how Perl's
-heuristic to guess file types works: http://eli.thegreenplace.net/2011/10/19/perls-guess-if-file-is-text-or-binary-implemented-in-python/
+heuristic to guess file types works: https://eli.thegreenplace.net/2011/10/19/perls-guess-if-file-is-text-or-binary-implemented-in-python/
 
 And that's just where we started. Over time, we've found more edge cases and
 our heuristic has gotten more complex.
 
 Also, this package saves you from having to write and thoroughly test
 your code with all sorts of weird file types and encodings, cross-platform.
+
+History
+-------
+
+This is a long-term fork of `binaryornot <https://github.com/audreyfeldroy/binaryornot>`_. It was created in
+May 2022 primarily because it appeared that upstream had been abandoned. There were a few other smaller issues:
+
+1. Lack of type annotations.
+2. Lack of stricter modern code quality tools used in CI.
+3. Improved contributor experience by using Github Actions for CI.
+4. Possibility for optimisation with optional dependency on `cchardet`.
 
 Credits
 -------
