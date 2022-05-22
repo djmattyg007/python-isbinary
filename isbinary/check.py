@@ -7,7 +7,7 @@ from typing import Final, Union
 from ._chardet import chardet_detect
 
 
-_default_starting_chunk_len: Final = 1024
+_default_starting_chunk_len: Final = 2028
 
 _control_chars: Final = b"\n\r\t\f\b"
 _printable_ascii: Final = _control_chars + bytes(range(32, 127))
@@ -19,7 +19,7 @@ def get_starting_chunk(
 ) -> bytes:
     """
     :param filename: File to open and get the first little chunk of.
-    :param chunk_len: Number of bytes to read, default 1024.
+    :param chunk_len: Number of bytes to read, default 2048.
     :return: Starting chunk of bytes.
     """
     with open(filename, "rb") as f:
@@ -135,7 +135,7 @@ def is_binary_file(
 ) -> bool:
     """
     :param filename: File to check.
-    :param starting_chunk_len: Number of bytes to read, default 1024.
+    :param starting_chunk_len: Number of bytes to read, default 2048.
     :returns: True if it's a binary file, otherwise False.
     """
     # Check if the starting chunk is a binary string

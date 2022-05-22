@@ -45,7 +45,6 @@ def test_txt_unicode(check_file_fixture: CheckFunc) -> None:
     assert check_file_fixture("unicode.txt") is False
 
 
-@pytest.mark.xfail
 def test_binary_pdf2(check_binfile_fixture: CheckFunc) -> None:
     assert check_binfile_fixture("pdf.pdf") is True
 
@@ -56,11 +55,6 @@ def test_text_russian2(check_binfile_fixture: CheckFunc) -> None:
 
 def test_binary_exe2(check_binfile_fixture: CheckFunc) -> None:
     assert check_binfile_fixture("grep") is True
-
-
-@pytest.mark.xfail
-def test_negative_binary(check_binfile_fixture: CheckFunc) -> None:
-    assert check_binfile_fixture("this_is_not_a_bin.pyc") is True
 
 
 def test_binary_sqlite(check_binfile_fixture: CheckFunc) -> None:

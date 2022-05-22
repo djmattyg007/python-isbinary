@@ -12,8 +12,7 @@ select =
     # pep8-naming rules
     N
     # flake8-pytest-style
-    # TODO: re-enable this after rewriting the test suite
-    #PT
+    PT
     # flake8-annotations-complexity
     TAE
     # flake8-expression-complexity
